@@ -31,9 +31,9 @@ public class Matrix extends Configured implements Tool{
     @Override
     public int run(String[] args) throws Exception {
         Configuration conf = this.getConf();
-        conf.set("m", "1000");
-        conf.set("n", "100");
-        conf.set("p", "1000");
+        conf.set("m", "5000");
+        conf.set("n", "20000");
+        conf.set("p", "2000");
         Job job = new Job(conf);
         job.setJarByClass(Matrix.class);
         job.setOutputKeyClass(Text.class);
