@@ -20,7 +20,7 @@ public class Map
         String[] indicesAndValue = line.split(",");
         Text outputKey = new Text();
         Text outputValue = new Text();
-        if (indicesAndValue[0].equals("M")) {
+        if (indicesAndValue[0].equals("A")) {
             for (int k = 0; k < p; k++) {
                 outputKey.set(indicesAndValue[1] + "," + k);
                 // outputKey.set(i,k);
@@ -33,7 +33,7 @@ public class Map
             // (N, j, k, Njk);
             for (int i = 0; i < m; i++) {
                 outputKey.set(i + "," + indicesAndValue[2]);
-                outputValue.set("N," + indicesAndValue[1] + ","
+                outputValue.set("B," + indicesAndValue[1] + ","
                         + indicesAndValue[3]);
                 context.write(outputKey, outputValue);
             }
