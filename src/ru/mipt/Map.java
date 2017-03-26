@@ -22,7 +22,7 @@ public class Map
         Text outputKey = new Text();
         Text outputValue = new Text();
         String fileName = ((FileSplit) context.getInputSplit()).getPath().getName();
-        if (fileName.substring(1,2).equals("A")) {
+        if (fileName.substring(0,1).equals("A")) {
             for (int k = 0; k < p; k++) {
                 outputKey.set(indicesAndValue[0] + "," + k);
                 // outputKey.set(i,k);
