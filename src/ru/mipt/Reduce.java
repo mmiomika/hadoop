@@ -33,8 +33,10 @@ public class Reduce
             result += m_ij * n_jk;
         }
 
-        if(key.toString().equals("3,3"))
-            RESULT_GLOBAL = result;
+        String[] split = key.toString().split(",");
+        if(split.length ==2)
+            if(split[0].equals("3") && split[1].equals("3"))
+                RESULT_GLOBAL = result;
 
         if (result != 0.0f) {
             context.write(null,
