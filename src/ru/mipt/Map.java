@@ -22,14 +22,12 @@ public class Map
         Text outputKey = new Text();
         Text outputValue = new Text();
         String fileName = ((FileSplit) context.getInputSplit()).getPath().getName();
-        if (fileName.contains("A")) {
+        if (fileName.substring(1,2).equals("A")) {
             for (int k = 0; k < p; k++) {
                 outputKey.set(indicesAndValue[0] + "," + k);
                 // outputKey.set(i,k);
-                outputValue.set(indicesAndValue[0] + "," + indicesAndValue[1]
+                outputValue.set("A," + indicesAndValue[1]
                         + "," + indicesAndValue[2]);
-               // outputValue.set("A" + "," + indicesAndValue[1]
-                 //       + "," + indicesAndValue[2]);
                 // outputValue.set(M,j,Mij);
                 context.write(outputKey, outputValue);
             }

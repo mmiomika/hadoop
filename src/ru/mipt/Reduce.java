@@ -1,7 +1,6 @@
 package ru.mipt;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
-
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -17,7 +16,7 @@ public class Reduce
         HashMap<Integer, Float> hashB = new HashMap<Integer, Float>();
         for (Text val : values) {
             value = val.toString().split(",");
-            if (value[0].contains("A")) {
+            if (value[0].substring(1,2).equals("A")) {
                 hashA.put(Integer.parseInt(value[1]), Float.parseFloat(value[2]));
             } else {
                 hashB.put(Integer.parseInt(value[1]), Float.parseFloat(value[2]));
