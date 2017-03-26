@@ -26,8 +26,10 @@ public class Map
             for (int k = 0; k < p; k++) {
                 outputKey.set(indicesAndValue[0] + "," + k);
                 // outputKey.set(i,k);
-                outputValue.set("A" + "," + indicesAndValue[1]
+                outputValue.set(indicesAndValue[0] + "," + indicesAndValue[1]
                         + "," + indicesAndValue[2]);
+               // outputValue.set("A" + "," + indicesAndValue[1]
+                 //       + "," + indicesAndValue[2]);
                 // outputValue.set(M,j,Mij);
                 context.write(outputKey, outputValue);
             }
@@ -37,6 +39,8 @@ public class Map
                 outputKey.set(i + "," + indicesAndValue[1]);
                 outputValue.set("B," + indicesAndValue[0] + ","
                         + indicesAndValue[2]);
+                //outputValue.set("B," + indicesAndValue[0] + ","
+                 //       + indicesAndValue[2]);
                 context.write(outputKey, outputValue);
             }
         }
