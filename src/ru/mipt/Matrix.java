@@ -63,7 +63,7 @@ public class Matrix extends Configured implements Tool{
             while(scanner.hasNextLine()){
                 String line = scanner.nextLine();
                 String[] split = line.split(",");
-                if (split[0].equals("3")&&split[1].equals("3"))
+                if (split[0].equals("19")&&split[1].equals("17"))
                     System.out.println(split[2]);
             }
         }
