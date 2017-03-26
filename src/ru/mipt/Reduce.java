@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 public class Reduce
         extends org.apache.hadoop.mapreduce.Reducer<Text, Text, Text, Text> {
+    public static float RESULT_GLOBAL = 0.0f;
     @Override
     public void reduce(Text key, Iterable<Text> values, Context context)
             throws IOException, InterruptedException {
@@ -31,6 +32,10 @@ public class Reduce
             n_jk = hashB.containsKey(j) ? hashB.get(j) : 0.0f;
             result += m_ij * n_jk;
         }
+
+        if(key.toString().equals("19,17"))
+            RESULT_GLOBAL = result;
+
         if (result != 0.0f) {
             context.write(null,
                     new Text(key.toString() + "," + Float.toString(result)));

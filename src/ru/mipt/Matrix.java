@@ -51,6 +51,7 @@ public class Matrix extends Configured implements Tool{
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
 
         job.waitForCompletion(true);
+        System.out.println(Reduce.RESULT_GLOBAL);
 
         return 0;
     }
