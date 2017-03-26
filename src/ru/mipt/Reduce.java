@@ -17,7 +17,7 @@ public class Reduce
         HashMap<Integer, Float> hashB = new HashMap<Integer, Float>();
         for (Text val : values) {
             value = val.toString().split(",");
-            if (value[0].equals("M")) {
+            if (value[0].contains("A")) {
                 hashA.put(Integer.parseInt(value[1]), Float.parseFloat(value[2]));
             } else {
                 hashB.put(Integer.parseInt(value[1]), Float.parseFloat(value[2]));

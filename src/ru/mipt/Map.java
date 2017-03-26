@@ -22,11 +22,11 @@ public class Map
         Text outputKey = new Text();
         Text outputValue = new Text();
         String fileName = ((FileSplit) context.getInputSplit()).getPath().getName();
-        if (fileName.equals("A_small")) {
+        if (fileName.contains("A")) {
             for (int k = 0; k < p; k++) {
                 outputKey.set(indicesAndValue[0] + "," + k);
                 // outputKey.set(i,k);
-                outputValue.set("A," + "," + indicesAndValue[1]
+                outputValue.set("A" + "," + indicesAndValue[1]
                         + "," + indicesAndValue[2]);
                 // outputValue.set(M,j,Mij);
                 context.write(outputKey, outputValue);
@@ -35,8 +35,7 @@ public class Map
             // (N, j, k, Njk);
             for (int i = 0; i < m; i++) {
                 outputKey.set(i + "," + indicesAndValue[1]);
-                outputValue.set("B," + indicesAndValue[0] + ","
-                        + indicesAndValue[2]);
+                outputValue.set("B" +  ","  + indicesAndValue[2]);
                 context.write(outputKey, outputValue);
             }
         }
