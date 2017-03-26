@@ -41,7 +41,7 @@ public class Matrix extends Configured implements Tool{
 
         job.setMapperClass(Map.class);
         job.setReducerClass(Reduce.class);
-        job.setNumReduceTasks(8);
+        job.setNumReduceTasks(2);
 
         job.setInputFormatClass(TextInputFormat.class);
         job.setOutputFormatClass(TextOutputFormat.class);

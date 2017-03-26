@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class Reduce
         extends org.apache.hadoop.mapreduce.Reducer<Text, Text, Text, Text> {
-    public static float RESULT_GLOBAL = 0.0f;
+    public static float RESULT_GLOBAL;
     @Override
     public void reduce(Text key, Iterable<Text> values, Context context)
             throws IOException, InterruptedException {
