@@ -31,6 +31,13 @@ public class Matrix extends Configured implements Tool{
     @Override
     public int run(String[] args) throws Exception {
         Configuration conf = this.getConf();
+        FileSystem fs = FileSystem.get(conf);
+        Path inputFilePath1 = new Path(args[0]);
+        Path inputFilePath2 = new Path(args[1]);
+        Path outputFilePath = new Path(args[2]);
+        if (fs.exists(outputFilePath)) {
+            fs.delete(outputFilePath, true);
+        }
         conf.set("m", "5000");
         conf.set("n", "20000");
         conf.set("p", "2000");
@@ -46,12 +53,20 @@ public class Matrix extends Configured implements Tool{
         job.setInputFormatClass(TextInputFormat.class);
         job.setOutputFormatClass(TextOutputFormat.class);
 
-        FileInputFormat.addInputPath(job, new Path(args[0]));
-        FileInputFormat.addInputPath(job, new Path(args[1]));
-        FileOutputFormat.setOutputPath(job, new Path(args[2]));
+        FileInputFormat.addInputPath(job, inputFilePath1);
+        FileInputFormat.addInputPath(job, inputFilePath2);
+        FileOutputFormat.setOutputPath(job, outputFilePath);
 
         job.waitForCompletion(true);
-        System.out.println(Reduce.RESULT_GLOBAL);
+        for (FileStatus status: fs.listStatus(outputFilePath)){
+            Scanner scanner = new Scanner(fs.open(status.getPath()));
+            while(scanner.hasNextLine()){
+                String line = scanner.nextLine();
+                String[] split = line.split(",");
+                if (split[0].equals("3")&&split[1].equals("3"))
+                    System.out.println(split[2]);
+            }
+        }
 
         return 0;
     }
