@@ -33,7 +33,7 @@ public class Reduce
             result += m_ij * n_jk;
         }
 
-        if(key.toString().equals("19,17"))
+        if(key.toString().equals("3,3"))
             RESULT_GLOBAL = result;
 
         if (result != 0.0f) {
