@@ -35,7 +35,8 @@ public class Map
             // (N, j, k, Njk);
             for (int i = 0; i < m; i++) {
                 outputKey.set(i + "," + indicesAndValue[1]);
-                outputValue.set("B" +  ","  + indicesAndValue[2]);
+                outputValue.set("B," + indicesAndValue[0] + ","
+                        + indicesAndValue[2]);
                 context.write(outputKey, outputValue);
             }
         }
